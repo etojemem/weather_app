@@ -59,6 +59,6 @@ const weatherSlice = createSlice({
     },
 });
 
-export const { setSearchValue, setStatus, setLatitude, setLongitude } = weatherSlice.actions;
+export const { setSearchValue, setLatitude, setLongitude } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import getImage from './getImage'
 
 export default function WeatherInfo() {
     const data = useSelector(state => state.weatherSlice.weather);
-    const mainWeather = useSelector(state => state.weatherSlice.mainWeather);
-    const img = getImage(mainWeather[0])
 
     return (
-        <Container background={img}>
+        <Container>
         {data?.map(city=>(
             <div key={city.id}>
                 <Wrapper>
@@ -19,7 +16,6 @@ export default function WeatherInfo() {
                     <p>{city.weather[0].main}</p>
                     <img src={`http://openweathermap.org/img/wn/${city.weather[0].icon}.png`}/>
                 </Wrapper>
-                <Img src={img}/>
             </div>
         ))}
         </Container>
@@ -31,20 +27,13 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     padding: 50px;
-    background-color: pink;
-    width: 500px;
-    height: 200px;
+    background-color: #fff;
+    width: 400px;
+    height: 150px;
 `
 const Wrapper = styled.div`
     display: flex;
     justify-content: center;
-`
-const Img = styled.img`
-    margin-top: 10px;
-    width: 500px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 4px;
 `
 const CityName = styled.div`
     font-size: 30px;
